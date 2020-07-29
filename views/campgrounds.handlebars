@@ -1,0 +1,23 @@
+<div class="container">
+    <header class="jumbotron">
+        <h1 class="display-4">Welcome to YelpCamp</h1>
+        <p class="lead">View our curated selection of popular campgrounds from all over the world.</p>
+        <hr class="my-4">
+        <p>Create a new campground entry by clicking the button below.</p>
+        <a class="btn btn-primary btn-lg" href="/campgrounds/new">Create</a>
+    </header>
+
+    <h2>Our Campgrounds</h2>
+    <div class="row">
+        {{#each campgrounds}}
+        <div class="col-sm-6 col-md-3 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="{{image}}" alt="Campground image">
+                <div class="card-body">
+                    <h5 class="card-text">{{name}}</h5>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
