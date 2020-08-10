@@ -1,6 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
 const app = express();
 const port = 3000;
@@ -27,16 +27,25 @@ app
     const result = campsitesCollection.then((collection) =>
       collection.find({}).toArray()
     );
-    res.render("campgrounds", { campsites: await result });
+    res.render("index", { campsites: await result });
   })
   .post(async (req, res) => {
     // app.locals.campgrounds = [...app.locals.campgrounds, req.body];
-    await campsitesCollection.then((collection) => collection.insertOne(req.body))
+    await campsitesCollection.then((collection) =>
+      collection.insertOne(req.body)
+    );
     res.redirect(303, "/campgrounds");
   });
 
 app.get("/campgrounds/new", (req, res) => {
   res.render("new");
+});
+
+app.get("/campgrounds/:id", async (req, res) => {
+  const result = campsitesCollection.then((collection) =>
+    collection.findOne(ObjectId(req.params.id))
+  );
+  res.render("show", await result);
 });
 
 app.listen(port, () => {
