@@ -1,15 +1,16 @@
 {
-  "name": "yelpCamp",
+  "name": "yelp-camp",
   "scripts": {
     "dev": "yarn nodemon --inspect -e js,json,handlebars app.js"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.1.0"
+    "express-handlebars": "^5.1.0",
+    "mongodb": "^3.6.0"
   },
   "devDependencies": {
     "@yarnpkg/pnpify": "^2.1.0",
-    "eslint": "^7.5.0",
+    "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-node": "^0.3.4",
@@ -17,4 +18,4 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5"
   }
-} 
+}
